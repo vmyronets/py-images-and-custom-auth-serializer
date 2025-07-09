@@ -69,8 +69,8 @@ class MovieViewSet(
     queryset = Movie.objects.prefetch_related("genres", "actors")
     serializer_class = MovieSerializer
 
-    # authentication_classes = (TokenAuthentication,)
-    # permission_classes = (IsAdminOrIfAuthenticatedReadOnly,)
+    authentication_classes = (TokenAuthentication,)
+    permission_classes = (IsAdminOrIfAuthenticatedReadOnly,)
 
     @staticmethod
     def _params_to_ints(qs):
@@ -114,7 +114,7 @@ class MovieViewSet(
         methods=["POST"],
         detail=True,
         url_path="upload-image",
-        # permission_classes=(IsAdminOrIfAuthenticatedReadOnly,),
+        permission_classes=(IsAdminOrIfAuthenticatedReadOnly,),
     )
     def upload_image(self, request, pk=None):
         """Upload an image to a movie"""
@@ -138,8 +138,8 @@ class MovieSessionViewSet(viewsets.ModelViewSet):
     )
     serializer_class = MovieSessionSerializer
 
-    # authentication_classes = (TokenAuthentication,)
-    # permission_classes = (IsAdminOrIfAuthenticatedReadOnly,)
+    authentication_classes = (TokenAuthentication,)
+    permission_classes = (IsAdminOrIfAuthenticatedReadOnly,)
 
     def get_queryset(self):
         date = self.request.query_params.get("date")
